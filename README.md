@@ -1,5 +1,5 @@
 # Data Challenge
-
+The following setup is a recomendatio but you are free to use any IDE of your choosing
 ## Content Index
 - [Data Challenge](#data-challenge)
   - [Content Index](#content-index)
