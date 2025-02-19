@@ -1,0 +1,6 @@
+
+directories:
+  landing: '/db/landing/ecommerce/orders/'
+  raw: '/db/raw/'
+  app: '/db/app'
+

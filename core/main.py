@@ -1,13 +1,1 @@
-import pandas as pd
 
-
-def landing_to_raw():
-    df = pd.read_csv('../db/landing/ecommerce/orders/839012383812.csv') #TODO CAMBIAR ESTO
-    df['raw'] = df.apply(lambda row: row.to_json(), axis=1)
-    df_metadata_columns = df[['user_id', '_job_batch_runtime', '_job_batch_id','raw']]
-    df_json = "\n".join(df_metadata_columns.apply(lambda row: row.to_json(), axis=1))
-
-    with open("output.txt", "w") as file:
-        file.write(df_json)
-
-landing_to_raw()
