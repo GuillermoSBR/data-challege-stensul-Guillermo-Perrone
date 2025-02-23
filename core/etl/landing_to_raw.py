@@ -1,6 +1,6 @@
-import pandas as pd
 import confuse
 from pathlib import Path
+from transformations import *
 import json
 
 project_path = str(Path(__file__).resolve().parents[2])
@@ -13,13 +13,12 @@ def main_execution(csv_name):
         destination_path = project_path + config['directories']['raw'].get()
 
         df = pd.read_csv(csv_path)
-        df['raw'] = df.apply(lambda row: row.to_json(), axis=1)
-        df_metadata_columns = df[['user_id', '_job_batch_runtime', '_job_batch_id','raw']]
-        df_json = "\n".join(df_metadata_columns.apply(lambda row: row.to_json(), axis=1))
+        df_json = landing_to_raw_transform(df)
 
         with open(destination_path + "raw_output.txt", "w") as file:
             file.write(df_json)
+
     except Exception as e:
-        return  json.dumps({"message": str(e)})
+        return  json.dumps({"error message": str(e)})
 
     return '200'
