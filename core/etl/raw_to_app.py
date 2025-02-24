@@ -15,6 +15,9 @@ def main_execution(raw):
     inputs_df = inputs_table_transform(df)
     inputs_df.to_parquet(app_path+'inputs_table.parquet', engine='pyarrow')
 
+    metrics_df = metrics_table_transform(inputs_df)
+    metrics_df.to_parquet(app_path + 'metrics_table.parquet', engine='pyarrow')
+
     return "Hello World!"
 
 main_execution('raw_output.txt')
