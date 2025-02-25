@@ -15,12 +15,10 @@ def main_execution(csv_name):
         df = pd.read_csv(csv_path)
         df_json = landing_to_raw_transform(df)
 
-        with open(destination_path + "raw_output.txt", "w") as file:
+        with open(destination_path + "raw_input.txt", "w") as file:
             file.write(df_json)
 
     except Exception as e:
         return  json.dumps({"error message": str(e)})
 
     return '200'
-
-main_execution('839012383812.csv')
