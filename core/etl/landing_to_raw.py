@@ -22,3 +22,5 @@ def main_execution(csv_name):
         return  json.dumps({"error message": str(e)})
 
     return '200'
+
+main_execution('839012383812.csv')
